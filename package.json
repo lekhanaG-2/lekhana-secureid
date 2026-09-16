@@ -1,0 +1,26 @@
+{
+  "name": "lekhana-secureid",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --env-file-if-exists=.env --watch server.js",
+    "test": "node --test test/*.test.js",
+    "check": "node --check server.js && node --check server/app.js && node --check public/app.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jose": "^6.1.0",
+    "otpauth": "^9.4.0",
+    "pg": "^8.16.3",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.4"
+  }
+}
