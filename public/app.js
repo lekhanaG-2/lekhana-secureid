@@ -52,6 +52,8 @@ const icon = (name, className = "") => {
 };
 const shield = (white = false) =>
   `<svg class="shield-logo" viewBox="0 0 40 46" aria-hidden="true"><path d="M20 1c6 5 11 6 17 7v15c0 12-17 22-17 22S3 35 3 23V8c6-1 11-2 17-7Z" fill="${white ? "#fff" : "#4430ef"}"/><path d="M20 3v39s15-9 15-20V10c-5-1-10-3-15-7" fill="${white ? "#eff1ff" : "#5b4dfa"}"/><rect x="13" y="19" width="14" height="15" rx="2" fill="${white ? "#4f69da" : "#fff"}"/><path d="M15 19v-6a5 5 0 0 1 10 0v6" fill="none" stroke="${white ? "#4f69da" : "#fff"}" stroke-width="2"/><path d="M20 24v5" stroke="${white ? "#fff" : "#4c36f0"}" stroke-width="2"/></svg>`;
+const infoShield = () =>
+  '<svg class="info-shield" viewBox="0 0 40 46" aria-hidden="true"><path d="M20 1c6 5 11 6 17 7v15c0 12-17 22-17 22S3 35 3 23V8c6-1 11-2 17-7Z" fill="#4430ef"/><path d="M20 3v39s15-9 15-20V10c-5-1-10-3-15-7" fill="#5b4dfa"/><circle cx="20" cy="15" r="2" fill="#fff"/><path d="M20 21v12" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>';
 const googleIcon =
   '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.39-.18-2.05H12v3.88h5.38a4.6 4.6 0 0 1-2 3.02v2.51h3.24c1.9-1.75 2.98-4.33 2.98-7.36Z"/><path fill="#34A853" d="M12 22c2.7 0 4.96-.9 6.62-2.41l-3.24-2.51c-.9.6-2.04.97-3.38.97-2.6 0-4.81-1.76-5.6-4.12H3.06v2.59A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.4 13.93a6 6 0 0 1 0-3.86V7.48H3.06a10 10 0 0 0 0 9.04l3.34-2.59Z"/><path fill="#EA4335" d="M12 5.95c1.47 0 2.79.51 3.82 1.5l2.86-2.87A9.58 9.58 0 0 0 12 2a10 10 0 0 0-8.94 5.48l3.34 2.59C7.19 7.71 9.4 5.95 12 5.95Z"/></svg>';
 const copyright =
@@ -168,7 +170,7 @@ function otpScreen(login) {
   const subtitle = authenticator
     ? "Enter the code from your<br>authenticator app"
     : `${login ? "Enter the 6-digit code sent to" : "We have sent a 6-digit code to"}<strong>${escape(destination)}</strong>`;
-  const badge = `<div class="icon-circle ${login ? "mobile-login-icon" : ""} ${!login && (wrong || expired || max) ? "red" : !email && !authenticator ? "green" : ""}">${authenticator ? (wrong ? icon("warning") : shield()) : icon(email ? "mail" : "phone")}</div>`;
+  const badge = `<div class="icon-circle ${login ? "mobile-login-icon" : ""} ${!login && (wrong || expired || max) ? "red" : !email && !authenticator ? "green" : ""}">${authenticator ? (wrong ? icon("warning") : infoShield()) : icon(email ? "mail" : "phone")}</div>`;
   let message = state.error;
   if (wrong && state.attemptsLeft !== null && !authenticator)
     message += `\nYou have ${state.attemptsLeft} attempt${state.attemptsLeft === 1 ? "" : "s"} left.`;
@@ -235,7 +237,7 @@ function methodOptions(login) {
   return `<div class="methods" role="radiogroup" aria-label="Verification method">${items.map(([method, title, copy, symbol]) => `<label class="method ${method} ${state.selectedMethod === method ? "selected" : ""}"><span class="method-icon">${icon(symbol)}</span><span class="method-copy"><strong>${title}</strong><small>${copy}</small></span><input type="radio" name="method" value="${method}" ${state.selectedMethod === method ? "checked" : ""}></label>`).join("")}</div>`;
 }
 function setupScreen(login) {
-  const content = `<div class="${login ? "login-content choose" : "verify-content setup-content"}">${login ? backButton("login") : ""}<div class="icon-circle shield ${login ? "mobile-login-icon" : ""}">${shield()}</div><h1>${login ? "Verify your identity" : "Set up Multi-Factor Auth"}</h1><p class="verify-copy">${login ? "Choose a method to continue" : "Add an extra layer of security<br>to protect your account."}</p>${methodOptions(login)}${errorBox()}<button class="primary" data-action="continue-method">Continue</button></div>`;
+  const content = `<div class="${login ? "login-content choose" : "verify-content setup-content"}">${login ? backButton("login") : ""}<div class="icon-circle shield ${login ? "mobile-login-icon" : ""}">${login ? shield() : infoShield()}</div><h1>${login ? "Verify your identity" : "Set up Multi-Factor Auth"}</h1><p class="verify-copy">${login ? "Choose a method to continue" : "Add an extra layer of security<br>to protect your account."}</p>${methodOptions(login)}${errorBox()}<button class="primary" data-action="continue-method">Continue</button></div>`;
   return login
     ? loginShell(content)
     : registrationShell(content, { active: 4, label: "4. Set Up MFA" });

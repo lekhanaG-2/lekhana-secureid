@@ -1705,3 +1705,127 @@ dialog .primary {
   .register-shell.success-shell { width: min(100%, 434px); }
   .register-shell .success-content { max-width: 336px; }
 }
+
+/* Final mobile calibration from the supplied composite boards. The native
+   status bar, device frame and numeric keyboard remain browser/OS chrome. */
+@media (max-width: 700px) {
+  .register-shell,
+  .register-shell.details {
+    padding-top: 52px;
+  }
+  .register-shell:has(.setup-content),
+  .register-shell:has(.qr-content),
+  .register-shell:has(.authenticator-otp),
+  .register-shell:has(.max-attempts),
+  .register-shell.success-shell {
+    padding-top: 16px;
+  }
+  .details .field {
+    margin-bottom: 10px;
+  }
+  .details .field input:not([type="checkbox"]),
+  .details .field select {
+    height: 36px;
+  }
+  .details .requirements {
+    margin-top: 12px;
+  }
+  .details .rules li {
+    margin-bottom: 6px;
+  }
+  .details .terms {
+    margin: 14px 0 16px;
+  }
+  .details .primary {
+    height: 40px;
+  }
+  .registration-otp:not(.authenticator-otp):not(.max-attempts) {
+    padding-inline: 8px;
+  }
+  .registration-otp:not(.authenticator-otp):not(.max-attempts) .icon-circle {
+    width: 82px;
+    height: 82px;
+  }
+  .registration-otp:not(.authenticator-otp):not(.max-attempts) h1 {
+    font-size: 22px;
+  }
+  .login-main {
+    padding-inline: 32px;
+  }
+  .mobile-login-icon,
+  .login-content.otp-content .mobile-login-icon {
+    width: 84px;
+    height: 84px;
+    margin: 34px auto 33px;
+  }
+  .mobile-login-icon svg,
+  .login-content.otp-content .mobile-login-icon svg {
+    width: 44px;
+    height: 48px;
+  }
+  .login-content h1,
+  .login-content.otp-content h1 {
+    font-size: 24px;
+  }
+  .login-content.otp-content .otp-group {
+    margin-top: 48px;
+  }
+  .login-content.otp-content .otp-group input {
+    width: 45px !important;
+    height: 57px !important;
+  }
+  .qr-content .actions {
+    display: none;
+  }
+  .qr-content:has(.setup-key:not([hidden])) .actions {
+    display: grid;
+  }
+  .setup-content .info-shield,
+  .authenticator-otp .info-shield {
+    width: 40px;
+    height: 46px;
+  }
+  .setup-content .icon-circle.shield {
+    margin-bottom: 20px;
+  }
+  .setup-content .verify-copy {
+    line-height: 1.3;
+  }
+  .setup-content .methods {
+    gap: 5px;
+    margin: 6px 0 16px;
+  }
+  .setup-content .method {
+    min-height: 42px;
+  }
+  .registration-otp.max-attempts .icon-circle {
+    margin-top: 0;
+  }
+  .registration-otp.authenticator-otp .icon-circle {
+    margin-bottom: 24px;
+  }
+  .registration-otp.authenticator-otp .otp-group {
+    margin-top: 20px;
+  }
+  .registration-otp.authenticator-otp .timer {
+    margin-top: 33px;
+  }
+  .qr-content .verify-copy {
+    line-height: 1.3;
+  }
+  .qr {
+    width: 160px;
+    height: 160px;
+    margin: 20px 0;
+  }
+  .success-content {
+    padding-top: 20px;
+  }
+  .success-content .success-list {
+    margin-top: 8px;
+    font-size: 13px;
+  }
+  .success-list li {
+    margin: 8px 0;
+  }
+}

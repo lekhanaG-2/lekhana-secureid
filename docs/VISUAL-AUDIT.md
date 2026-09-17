@@ -22,6 +22,8 @@ The local review fixture is separate from production. It uses sample OTPs, a tes
 - Registration help links stay aligned across normal/error states.
 - QR and success icon sizing; desktop panel widths follow their respective reference panels.
 - Removed unintended one-pixel mobile OTP scrolling.
+- Matched the registration MFA information-shield artwork instead of reusing the login lock mark.
+- Recalibrated mobile content offsets, icon scale, headings and OTP boxes to the supplied phone panels.
 
 ## Verification
 
@@ -34,6 +36,6 @@ The local review fixture is separate from production. It uses sample OTPs, a tes
 
 The reference consists of scaled composite raster boards, not original screen exports with declared viewport sizes, font files, or vector icons. Typography, antialiasing, and recreated icon paths are not verified pixel-identical. QR patterns, names, OTP digits and timers depend on runtime data. Phone frames, status bars, and native keyboards belong to the device rather than the web page.
 
-The mobile QR reference omits a forward control. The implemented screen keeps explicit Back/Continue controls so a user can proceed to authenticator verification. This is a known visible difference. The desktop reference includes these controls.
+The mobile QR reference omits a forward control. The initial mobile screen now matches that state; selecting “Enter setup key” reveals the Back/Continue controls needed to complete the journey. The desktop reference keeps those controls visible.
 
 Conclusion: all provided screen states have been visually reviewed and concrete mismatches corrected; do not describe the result as an exact pixel-for-pixel reproduction.
