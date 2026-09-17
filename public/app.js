@@ -183,7 +183,7 @@ function otpScreen(login) {
   else if (expired || max)
     controls = `<button class="primary" data-action="resend" id="resend-button">${login ? "Resend code" : "Resend New Code"}</button>${login ? '<p class="cooldown-note" id="cooldown-note"></p>' : ""}`;
   else controls = timeMarkup();
-  const content = `<div class="${login ? "login-content otp-content" : "verify-content registration-otp"} ${expired ? "expired" : ""}">${login ? backButton("choose") : ""}${badge}<h1>${title}</h1><p class="verify-copy">${subtitle}</p><form id="otp-form" class="otp-form">${otpInputs()}<p id="otp-error" class="otp-message ${!login && !authenticator && (wrong || max) ? "banner" : ""}" role="alert">${escape(message)}</p><button type="submit" class="otp-submit">Verify code</button></form>${controls}${help}</div>`;
+  const content = `<div class="${login ? "login-content otp-content" : "verify-content registration-otp"} ${expired ? "expired" : ""} ${authenticator ? "authenticator-otp" : ""} ${max ? "max-attempts" : ""} ${wrong ? "wrong-code" : ""}">${login ? backButton("choose") : ""}${badge}<h1>${title}</h1><p class="verify-copy">${subtitle}</p><form id="otp-form" class="otp-form">${otpInputs()}<p id="otp-error" class="otp-message ${!login && !authenticator && (wrong || max) ? "banner" : ""}" role="alert">${escape(message)}</p><button type="submit" class="otp-submit">Verify code</button></form>${controls}${help}</div>`;
   if (login) return loginShell(content);
   const label = authenticator
     ? wrong
@@ -201,7 +201,7 @@ function otpScreen(login) {
           ? "3a. Mobile OTP - Wrong Code"
           : "3. Mobile Verification - OTP";
   return registrationShell(content, {
-    active: authenticator ? 4 : email ? 2 : 3,
+    active: authenticator ? 4 : 2,
     label,
   });
 }

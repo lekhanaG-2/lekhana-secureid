@@ -1623,3 +1623,85 @@ dialog .primary {
   .success-content .primary { margin-top: 12px; height: 36px; }
   .qr-content .actions { margin-top: 20px; }
 }
+
+/* State-specific measurements from the registration and login reference boards. */
+@media (min-width: 701px) {
+  .register-shell:has(.wrong-code) .steps { margin-bottom: 16px; }
+  .register-shell .wrong-code .icon-circle { margin-bottom: 14px; }
+  .register-shell .wrong-code .otp-group { margin-top: 17px; margin-bottom: 19px; }
+  .register-shell .wrong-code .otp-message { line-height: 1.5; padding: 6px; }
+  .register-shell .wrong-code .help { padding-top: 20px; }
+  .register-shell .qr-content h1 { margin-top: 22px; }
+  .register-shell .qr { width: 152px; height: 152px; }
+  .register-shell .success-content .icon-circle { width: 64px; height: 64px; }
+  .success-content .success-list { margin-top: 19px; }
+  .login-content.otp-content .otp-group { margin-top: 60px; }
+}
+@media (max-width: 700px) {
+  .mobile-login-icon { margin-top: 0; }
+  .login-content h1 { font-size: 26px; }
+  .login-content .subtitle { font-size: 16px; }
+  .login-content.otp-content { min-height: calc(100svh - 66px); }
+  .login-content.otp-content .mobile-login-icon { width: 96px; height: 96px; margin-top: 0; }
+  .login-content.otp-content .mobile-login-icon svg { width: 46px; height: 46px; }
+  .registration-otp:not(.authenticator-otp):not(.max-attempts) {
+    min-height: 560px;
+  }
+  .registration-otp:not(.authenticator-otp):not(.max-attempts) .help {
+    margin-top: auto;
+    padding-top: 24px;
+  }
+  .register-shell:has(.authenticator-otp),
+  .register-shell:has(.max-attempts) { padding-top: 16px; }
+  .register-shell:has(.authenticator-otp) .mobile-back,
+  .register-shell:has(.max-attempts) .mobile-back { margin-bottom: 0; }
+  .registration-otp.authenticator-otp,
+  .registration-otp.max-attempts { min-height: 0; }
+  .registration-otp.authenticator-otp .icon-circle,
+  .registration-otp.max-attempts .icon-circle {
+    width: 46px; height: 46px; margin-top: -18px; margin-bottom: 12px;
+  }
+  .registration-otp.authenticator-otp .icon-circle { background: none; }
+  .registration-otp.authenticator-otp h1,
+  .registration-otp.max-attempts h1 { font-size: 18px; }
+  .registration-otp.authenticator-otp .verify-copy,
+  .registration-otp.max-attempts .verify-copy { margin-top: 10px; font-size: 13px; line-height: 1.5; }
+  .registration-otp.authenticator-otp .otp-group,
+  .registration-otp.max-attempts .otp-group { margin: 28px 0 20px; }
+  .registration-otp.authenticator-otp .otp-digit,
+  .registration-otp.max-attempts .otp-digit { height: 36px !important; font-size: 16px; }
+  .registration-otp.authenticator-otp .timer { font-size: 13px; margin: 12px 0 0; }
+  .registration-otp.authenticator-otp .help { padding-top: 44px; padding-bottom: 0; }
+  .registration-otp.max-attempts .otp-message { font-size: 12px; margin-bottom: 14px; }
+  .registration-otp.max-attempts .primary { height: 34px; font-size: 13px; }
+  .registration-otp.max-attempts .help { padding-top: 18px; padding-bottom: 0; }
+  .qr-content { padding-top: 0; }
+  .register-shell:has(.qr-content) .mobile-back { margin-bottom: 8px; }
+  .qr { width: 170px; height: 170px; margin: 22px 0; }
+  .qr-content .actions { padding-top: 0; }
+}
+@media (max-width: 700px) {
+  .login-form input:not([type="checkbox"]) { height: 59px; }
+  .login-form .field { margin-bottom: 32px; }
+  .login-options { margin-bottom: 58px; }
+  .login-content.choose .methods { margin-top: 50px; gap: 22px; }
+  .login-content.choose .method { min-height: 93px; }
+  .login-content.otp-content .otp-group { margin-top: 52px; }
+  .login-content.otp-content .otp-digit { height: 59px !important; }
+  .login-content.otp-content .help { padding-top: 90px; }
+  .login-content.otp-content.wrong-code .help { padding-top: 72px; }
+}
+@media (max-width: 700px) {
+  .registration-otp:not(.authenticator-otp):not(.max-attempts) { flex: 0 0 auto; min-height: 540px; }
+}
+@media (min-width: 701px) {
+  .login-shell:has(.login-form .invalid-input) { width: min(100%, 506px); grid-template-columns: 160px 1fr; }
+  .login-shell:has(.choose) { width: min(100%, 490px); grid-template-columns: 156px 1fr; }
+  .login-shell:has(.otp-content) { width: min(100%, 464px); grid-template-columns: 152px 1fr; }
+  .login-shell:has(.otp-content.expired) { width: min(100%, 488px); }
+  .login-content.otp-content .otp-digit { width: 36px !important; }
+  .register-shell:has(.qr-content) { width: min(100%, 454px); }
+  .register-shell .qr-content { max-width: 394px; }
+  .register-shell.success-shell { width: min(100%, 434px); }
+  .register-shell .success-content { max-width: 336px; }
+}
